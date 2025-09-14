@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Gateway - DANA, GOPAY, OVO</title>
+    <title> Web Payment Rapzoffc - DANA, Gopay, OVO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,332 +14,262 @@
         }
 
         body {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><rect width="1200" height="800" fill="%230c0c0c"/><text x="50" y="100" font-family="Arial" font-size="40" font-weight="bold" fill="%23ffffff" opacity="0.1">PENNING</text><text x="50" y="180" font-family="Arial" font-size="80" font-weight="bold" fill="%23ffffff" opacity="0.15">MIGHT</text><text x="50" y="350" font-family="Arial" font-size="30" font-weight="bold" fill="%23ffffff" opacity="0.08">ICOME</text><text x="50" y="420" font-family="Arial" font-size="60" font-weight="bold" fill="%23ffffff" opacity="0.1">NO</text><text x="50" y="550" font-family="Arial" font-size="35" font-weight="bold" fill="%23ffffff" opacity="0.09">OF SUGGEST</text></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #f1f1f1;
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 800px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(25, 25, 35, 0.85);
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            animation: fadeIn 0.8s ease;
+            padding: 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .header {
-            background: #4e54c8;
-            color: white;
+        header {
             text-align: center;
-            padding: 25px 20px;
-            position: relative;
+            margin-bottom: 2rem;
         }
 
-        .header h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #4e54c8;
         }
 
-        .header p {
-            font-size: 16px;
-            opacity: 0.9;
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #ff6b6b, #4e54c8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .payment-container {
-            padding: 30px;
+        .subtitle {
+            color: #a0a0c0;
+            margin-bottom: 2rem;
         }
 
-        .payment-option {
-            background: white;
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .payment-card {
+            background: rgba(40, 40, 50, 0.8);
             border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 5px solid #4e54c8;
-            animation: slideIn 0.5s ease;
-        }
-
-        .payment-option:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .payment-header {
+            padding: 1.5rem;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .payment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
         .payment-icon {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            margin-right: 15px;
-            font-size: 24px;
-            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
 
-        .dana .payment-icon {
-            background: #00a3e0;
+        .dana { color: #00a3ff; }
+        .gopay { color: #00aae7; }
+        .ovo { color: #4c2a86; }
+
+        .payment-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
         }
 
-        .gopay .payment-icon {
-            background: #00a9b4;
-        }
-
-        .ovo .payment-icon {
-            background: #4c2b87;
-        }
-
-        .payment-header h3 {
-            font-size: 20px;
-            color: #333;
-        }
-
-        .payment-details {
-            margin-top: 15px;
+        .payment-info {
+            background: rgba(30, 30, 40, 0.7);
+            padding: 1rem;
+            border-radius: 10px;
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .payment-number {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #f8f9fa;
-            padding: 12px 15px;
-            border-radius: 10px;
-            margin-bottom: 10px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            margin: 0.5rem 0;
+            color: #ffffff;
+            font-weight: 500;
         }
 
-        .payment-number span {
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-            letter-spacing: 1px;
+        .payment-name {
+            font-size: 0.9rem;
+            color: #a0a0c0;
+            margin-bottom: 0.5rem;
         }
 
         .copy-btn {
-            background: #4e54c8;
+            background: linear-gradient(90deg, #4e54c8, #8f94fb);
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background 0.3s ease;
-            font-size: 14px;
+            margin-top: 0.5rem;
+            transition: opacity 0.3s;
         }
 
         .copy-btn:hover {
-            background: #3a3eb3;
+            opacity: 0.9;
         }
 
-        .instructions {
-            margin-top: 15px;
-            font-size: 14px;
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .footer {
+        footer {
             text-align: center;
-            padding: 20px;
-            background: #f8f9fa;
-            color: #666;
-            font-size: 14px;
+            margin-top: 2rem;
+            color: #a0a0c0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
         }
 
         .notification {
             position: fixed;
             top: 20px;
             right: 20px;
-            padding: 15px 25px;
-            background: #4CAF50;
-            color: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transform: translateX(100%);
+            padding: 1rem;
+            background: rgba(40, 40, 50, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: translateX(150%);
             transition: transform 0.3s ease;
             z-index: 1000;
+            border-left: 4px solid #4e54c8;
         }
 
         .notification.show {
             transform: translateX(0);
         }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .header h1 {
-                font-size: 24px;
-            }
-            
-            .payment-header h3 {
-                font-size: 18px;
-            }
-            
-            .payment-number span {
-                font-size: 16px;
-            }
-            
-            .container {
-                border-radius: 15px;
-            }
-            
-            .payment-number {
-                flex-direction: column;
-                gap: 10px;
-                align-items: flex-start;
-            }
-            
-            .copy-btn {
-                align-self: flex-end;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <header>
+            <div class="logo">
+                <i class="fas fa-wallet"></i>
+            </div>
             <h1>Payment Gateway</h1>
-            <p>Pilih metode pembayaran yang Anda inginkan</p>
-        </div>
-        
-        <div class="payment-container">
-            <!-- DANA Payment -->
-            <div class="payment-option dana">
-                <div class="payment-header">
-                    <div class="payment-icon">
-                        <i class="fas fa-wallet"></i>
-                    </div>
-                    <h3>DANA</h3>
+            <p class="subtitle">Lakukan pembayaran melalui DANA, Gopay, atau OVO</p>
+        </header>
+
+        <div class="payment-methods">
+            <div class="payment-card">
+                <div class="payment-icon dana">
+                    <i class="fas fa-money-bill-wave"></i>
                 </div>
-                <div class="payment-details">
-                    <div class="payment-number">
-                        <span id="dana-number">083853464693</span>
-                        <button class="copy-btn" onclick="copyToClipboard('dana-number', 'DANA')">Salin</button>
-                    </div>
-                    <div class="instructions">
-                        <p>1. Buka aplikasi DANA di ponsel Anda<br>
-                        2. Pilih "Kirim" atau "Transfer"<br>
-                        3. Masukkan nomor di atas<br>
-                        4. Masukkan jumlah transfer dan konfirmasi</p>
-                    </div>
+                <h3 class="payment-title">DANA</h3>
+                <div class="payment-info">
+                    <p class="payment-number">081290852613</p>
+                    <p class="payment-name">a/n rapi</p>
+                    <button class="copy-btn" data-number="081290852613">
+                        <i class="fas fa-copy"></i> Salin Nomor
+                    </button>
                 </div>
             </div>
-            
-            <!-- GOPAY Payment -->
-            <div class="payment-option gopay">
-                <div class="payment-header">
-                    <div class="payment-icon">
-                        <i class="fas fa-money-bill-wave"></i>
-                    </div>
-                    <h3>GOPAY</h3>
+
+            <div class="payment-card">
+                <div class="payment-icon gopay">
+                    <i class="fas fa-money-bill-alt"></i>
                 </div>
-                <div class="payment-details">
-                    <div class="payment-number">
-                        <span id="gopay-number">083853464693</span>
-                        <button class="copy-btn" onclick="copyToClipboard('gopay-number', 'GOPAY')">Salin</button>
-                    </div>
-                    <div class="instructions">
-                        <p>1. Buka aplikasi Gojek di ponsel Anda<br>
-                        2. Pilih "Bayar" atau "Transfer"<br>
-                        3. Masukkan nomor di atas<br>
-                        4. Masukkan jumlah transfer dan konfirmasi</p>
-                    </div>
+                <h3 class="payment-title">Gopay</h3>
+                <div class="payment-info">
+                    <p class="payment-number">082313805886</p>
+                    <p class="payment-name">a/n rapi</p>
+                    <button class="copy-btn" data-number="082313805886">
+                        <i class="fas fa-copy"></i> Salin Nomor
+                    </button>
                 </div>
             </div>
-            
-            <!-- OVO Payment -->
-            <div class="payment-option ovo">
-                <div class="payment-header">
-                    <div class="payment-icon">
-                        <i class="fas fa-credit-card"></i>
-                    </div>
-                    <h3>OVO</h3>
+
+            <div class="payment-card">
+                <div class="payment-icon ovo">
+                    <i class="fas fa-credit-card"></i>
                 </div>
-                <div class="payment-details">
-                    <div class="payment-number">
-                        <span id="ovo-number">083853464693</span>
-                        <button class="copy-btn" onclick="copyToClipboard('ovo-number', 'OVO')">Salin</button>
-                    </div>
-                    <div class="instructions">
-                        <p>1. Buka aplikasi OVO di ponsel Anda<br>
-                        2. Pilih "Transfer"<br>
-                        3. Masukkan nomor di atas<br>
-                        4. Masukkan jumlah transfer dan konfirmasi</p>
-                    </div>
+                <h3 class="payment-title">OVO</h3>
+                <div class="payment-info">
+                    <p class="payment-number">08129085261</p>
+                    <p class="payment-name">a/n rapi</p>
+                    <button class="copy-btn" data-number="08129085261">
+                        <i class="fas fa-copy"></i> Salin Nomor
+                    </button>
                 </div>
             </div>
         </div>
-        
-        <div class="footer">
-            <p>© 2023 Payment Gateway. Pastikan informasi pembayaran sudah benar sebelum melakukan transfer.</p>
-        </div>
+
+        <footer>
+            <p>©Rapzoffc || kalau sudah tf wajib sertakan bukti tf nya ya , kalau g di sertakan ga bakal ku proses/ku anggap hangus.</p>
+        </footer>
     </div>
 
     <div class="notification" id="notification">
-        Nomor berhasil disalin!
+        <p><i class="fas fa-check-circle"></i> Nomor berhasil disalin!</p>
     </div>
 
     <script>
-        function copyToClipboard(elementId, provider) {
-            const element = document.getElementById(elementId);
-            const text = element.innerText;
-            
-            navigator.clipboard.writeText(text).then(() => {
-                showNotification(`Nomor ${provider} berhasil disalin!`);
-                
-                const originalText = event.target.innerText;
-                event.target.innerText = "Tersalin!";
-                event.target.style.background = "#4CAF50";
-                
-                setTimeout(() => {
-                    event.target.innerText = originalText;
-                    event.target.style.background = "#4e54c8";
-                }, 2000);
-            }).catch(err => {
-                showNotification("Gagal menyalin teks");
-                console.error('Gagal menyalin teks: ', err);
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const number = this.getAttribute('data-number');
+                copyToClipboard(number);
+                showNotification();
             });
+        });
+
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
         }
-        
-        function showNotification(message) {
-            const notification = document.getElementById("notification");
-            notification.innerText = message;
-            notification.classList.add("show");
+
+        function showNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.add('show');
             
             setTimeout(() => {
-                notification.classList.remove("show");
-            }, 3000);
+                notification.classList.remove('show');
+            }, 2000);
         }
     </script>
 </body>
-</html>
+                        </html>
